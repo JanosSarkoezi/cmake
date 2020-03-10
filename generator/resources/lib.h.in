@@ -1,0 +1,30 @@
+#ifndef _${LIB_CLASS_DEF}_H_
+#define _${LIB_CLASS_DEF}_H_
+
+#include <string>
+#include <vector>
+
+namespace ${LIB_NAMESPACE} {
+    class ${LIB_CLASS} {
+        public:
+            ${LIB_CLASS}();
+            ${LIB_CLASS}(const ${LIB_CLASS}& other);
+            ${LIB_CLASS}& operator=(const ${LIB_CLASS}& other);
+            ${LIB_CLASS}(${LIB_CLASS}&& other);
+            ${LIB_CLASS}& operator=(${LIB_CLASS}&& other);
+            ~${LIB_CLASS}() = default;
+
+            std::vector<int> getList() {
+                return list;
+            }
+
+            std::string getProperty() {
+                return property;
+            }
+        protected:
+            std::string property;
+            std::vector<int> list;
+    };
+}
+
+#endif // _${LIB_CLASS_DEF}_H_

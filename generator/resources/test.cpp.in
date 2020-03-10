@@ -1,0 +1,38 @@
+#include "${LIB_CLASS}.h"
+#include <iostream>
+#include <iterator>
+
+#define BOOST_TEST_MODULE VsidCommonTest
+#include <boost/test/unit_test.hpp>
+
+BOOST_AUTO_TEST_SUITE(CVectorTests)
+
+BOOST_AUTO_TEST_CASE(Constructor) {
+    ${LIB_NAMESPACE}::${LIB_CLASS} test;
+
+    BOOST_CHECK_EQUAL(test.getList().empty(), true);
+    BOOST_CHECK_EQUAL(test.getProperty().empty(), true);
+}
+
+BOOST_AUTO_TEST_CASE(CopyConstructor) {
+    ${LIB_NAMESPACE}::${LIB_CLASS} test1;
+    ${LIB_NAMESPACE}::${LIB_CLASS} test2(test1);
+
+    BOOST_CHECK_EQUAL(test2.getList().empty(), true);
+    BOOST_CHECK_EQUAL(test2.getProperty().empty(), true);
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(OperatorTest)
+
+BOOST_AUTO_TEST_CASE(AssignmentOperator)
+{
+    ${LIB_NAMESPACE}::${LIB_CLASS} test1;
+    ${LIB_NAMESPACE}::${LIB_CLASS} test2 = test1;
+
+    BOOST_CHECK_EQUAL(test2.getList().empty(), true);
+    BOOST_CHECK_EQUAL(test2.getProperty().empty(), true);
+}
+
+BOOST_AUTO_TEST_SUITE_END()

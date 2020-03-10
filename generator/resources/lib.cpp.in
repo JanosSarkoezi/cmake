@@ -1,0 +1,34 @@
+#include "${LIB_CLASS}.h"
+
+namespace ${LIB_NAMESPACE} {
+    ${LIB_CLASS}::${LIB_CLASS}(): property("") {
+    }
+    
+    ${LIB_CLASS}::${LIB_CLASS}(const ${LIB_CLASS}& other) :
+        list(other.list),
+        property(other.property) {
+    }
+
+    ${LIB_CLASS}& ${LIB_CLASS}::operator=(const ${LIB_CLASS}& other) {
+        if(&other == this) {
+            return *this;
+        }
+    
+        list = other.list;
+        property = other.property;
+    
+        return *this;
+    }
+
+    ${LIB_CLASS}::${LIB_CLASS}(${LIB_CLASS}&& other) :
+        list(std::move(other.list)),
+        property(std::move(other.property)) {
+    }
+
+    ${LIB_CLASS}& ${LIB_CLASS}::operator=(${LIB_CLASS}&& other) {
+        list = std::move(other.list);
+        property = std::move(other.property);
+
+        return *this;
+    }
+}

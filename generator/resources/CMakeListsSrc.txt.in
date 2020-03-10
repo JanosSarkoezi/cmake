@@ -1,0 +1,4 @@
+project(sources)
+
+add_executable(prog main.cpp)
+target_link_libraries(prog PRIVATE ${LIB_NAME})

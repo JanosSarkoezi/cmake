@@ -1,0 +1,8 @@
+project(lib)
+
+add_library(${LIB_NAME}
+    STATIC
+    ${LIB_CLASS}.h
+    ${LIB_CLASS}.cpp)
+
+target_include_directories(${LIB_NAME} PUBLIC ${CCSD})

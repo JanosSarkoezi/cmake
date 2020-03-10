@@ -1,0 +1,6 @@
+[submodule "zen/triangle/external/glfw"]
+	path = zen/triangle/external/glfw
+	url = https://github.com/glfw/glfw.git
+[submodule "zen/triangle/external/glm"]
+	path = zen/triangle/external/glm
+	url = https://github.com/g-truc/glm.git
