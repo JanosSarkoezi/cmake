@@ -15,3 +15,15 @@ target_link_libraries(main
 target_compile_options(main 
     PRIVATE -Wall
     )
+
+
+add_executable(transformation
+    shader_m.h
+    transformation.cpp)
+
+target_link_libraries(transformation
+    PRIVATE glfw
+    PRIVATE glad
+    PRIVATE glm
+    PRIVATE stb
+    )
