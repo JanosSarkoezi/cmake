@@ -29,6 +29,7 @@ Der Register A war der Akkumulator. Die anderen sechs Register konnten individue
 
 ## 16 Bit Register (Intel 8086)
 
+### Register
 Die Register für allgemeinen Zweck (General Purpose Register).
 
 - *AX* Wird für arithmetische Operationen benutzt. (Accumulator)
@@ -49,8 +50,7 @@ Die Segment Register
 - *FS* Zeiger für den mehr Extra Daten. (F kommt hinter E)
 - *GS* Zeiger für den noch mehr Extra Daten. (G kommt hinter F)
 
-## Flags
-
+### Flags
 EFlags Register
 
 ```
