@@ -55,7 +55,7 @@ Visulaisation of file header:
 
 - `e_ident` identify the file as an ELF object file, and provide information about the data representation of the object file structures.
 
-|  Name        | Value | Purpose                                    |
+    -|  Name        | Value | Purpose                                    |
 |--------------|-------|--------------------------------------------|
 |EI_MAG0       |   0   | File identification                        |
 |EI_MAG1       |   1   | EI_MAG2 2 EI_MAG3 3 EI_CLASS 4 File class  |
