@@ -53,9 +53,9 @@ Visulaisation of file header:
 +--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
 ```
 
-- `e_ident` identify the file as an ELF object file, and provide information about the data representation of the object file structures.
-
-    -|  Name        | Value | Purpose                                    |
+<ul>
+<li> `e_ident` identify the file as an ELF object file, and provide information about the data representation of the object file structures.
+|  Name        | Value | Purpose                                    |
 |--------------|-------|--------------------------------------------|
 |EI_MAG0       |   0   | File identification                        |
 |EI_MAG1       |   1   | EI_MAG2 2 EI_MAG3 3 EI_CLASS 4 File class  |
@@ -65,7 +65,8 @@ Visulaisation of file header:
 |EI_ABIVERSION |   8   | ABI version                                |
 |EI_PAD        |   9   | Start of padding bytes                     |
 |EI_NIDENT     |  16   | Size of e_ident[]                          |
-
+</li>
+</ul>
 - `e_type` identifies the object file type.
 - `e_machine` identifies the target architecture.
 - `e_version` identifies the version of the object file format. Currently, this field has the value EV_CURRENT, which is defined with the value 1.
