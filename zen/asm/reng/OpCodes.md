@@ -1,5 +1,42 @@
 # x86 Meditations
 
+Erstellen ein mini C Programm im Verzeichnis /tmp. Der Name der Date sei t.c
+```C
+float getFloat() {
+    return 1.1f;
+}
+
+int main(int argc, char ** argv) {
+    float f = getFloat();
+    return 0;
+}
+```
+und lassen es mit
+```
+gcc t.c
+```
+compilieren, wenn wir im Verzeichnis /tmp sind. Jetzt können wir ein hexdump mit
+```
+hexdump -C /tmp/a.out -n 128 -s $((0))
+```
+ausfüren und bekommen den Anfang der Date, genauer 128 Byte zu sehen. Bei mir sieht das so aus:
+```
+00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
+00000010  03 00 3e 00 01 00 00 00  f0 04 00 00 00 00 00 00  |..>.............|
+00000020  40 00 00 00 00 00 00 00  00 19 00 00 00 00 00 00  |@...............|
+00000030  00 00 00 00 40 00 38 00  09 00 40 00 1c 00 1b 00  |....@.8...@.....|
+00000040  06 00 00 00 04 00 00 00  40 00 00 00 00 00 00 00  |........@.......|
+00000050  40 00 00 00 00 00 00 00  40 00 00 00 00 00 00 00  |@.......@.......|
+00000060  f8 01 00 00 00 00 00 00  f8 01 00 00 00 00 00 00  |................|
+00000070  08 00 00 00 00 00 00 00  03 00 00 00 04 00 00 00  |................|
+00000080
+```
+Wenn wir nun Die Struktur dieser Datei mit der Beschreibung des [Headers](ELF-64.md) verstehen, so interessieren wir uns für die zweite Zeile der hexdump ausgabe
+```
+00000010  03 00 3e 00 01 00 00 00  f0 04 00 00 00 00 00 00  |..>.............|
+                                   ^^^^^^^^^^^^^^^^^^^^^^^
+```
+speziell die mit `^` gekennzeichneten. Diese Bytes lesen wie dann von **rechs** nach **links** und erhalten so in der Kurzform `0x04f0`. Ach ja voher weiß man das, dass diese Bytes von rechts nach links zu lesen sind? Das steht auch im Header. Genauer in der 
 
 ## Operator Code (Opcode) Oktal
 ```
