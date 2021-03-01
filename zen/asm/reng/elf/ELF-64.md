@@ -54,7 +54,7 @@ Visulaisation of file header:
 ```
 
 - `e_ident` identify the file as an ELF object file, and provide information about the data representation of the object file structures. [More Information](tables/e_ident.md)
-- `e_type` identifies the object file type.
+- `e_type` identifies the object file type. [More Information](tables/e_type.md)
 - `e_machine` identifies the target architecture.
 - `e_version` identifies the version of the object file format. Currently, this field has the value EV_CURRENT, which is defined with the value 1.
 - `e_entry` contains the virtual address of the program entry point. If there is no entry point, this field contains zero.

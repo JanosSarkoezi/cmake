@@ -37,7 +37,7 @@ structures. Lists of encodings defined for ELF-64.
     |  Name         | Value | Meaning                                       |
     |---------------|-------|-----------------------------------------------|
     | ELFDATA2LSB   |   1   | Object file data structures are little-endian |
-    | ELFDATA2MSB   |   2   | Object file data structures are big- endian   |
+    | ELFDATA2MSB   |   2   | Object file data structures are big-endian   |
 
     For the convenience of code that examines ELF object files at run time
     (e.g., the dynamic loader), it is intended that the data encoding of the
@@ -53,17 +53,3 @@ of an ABI. The interpretation of this version number is dependent on the
 ABI identified by the EI_OSABI field.
 For applications conforming to the System V ABI, third edition, this field
 should contain 0.
-- e_type identifies the object file type. The processor-independent values
-for this field are listed here
-
-    |  Name         | Value  | Meaning                  |
-    |---------------|--------|--------------------------|
-    | ET_NONE       | 0      | No filetype              |
-    | ET_REL        | 1      | Relocatable object file  |
-    | ET_EXEC       | 2      | Executable file          |
-    | ET_DYN        | 3      | Shared object file       |
-    | ET_CORE       | 4      | Core file                |
-    | ET_LOOS       | 0xFE00 | Environment-specific use |
-    | ET_HIOS       | 0xFEFF |                          |
-    | ET_LOPROC     | 0xFF00 | Pocessor specific use    |
-    | ET_HIPROC     | 0xFFFF |                          |
