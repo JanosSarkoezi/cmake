@@ -10,8 +10,8 @@ Benutzung der Register
 
 Der Register A war der Akkumulator. Die anderen sechs Register konnten individuell als 8 Bit oder als drei 16 Bit Register genutzt werden. Die Paarung der Register war BC, DE und HL.
 - Die zwei 16 Bit Register
--- SP (Stack Pointer). Dieser Register referenzierte Speicheradressen auf dem Stack.
--- PC (Program Count) oder IP (Instruction Pointer).
+    - SP (Stack Pointer). Dieser Register referenzierte Speicheradressen auf dem Stack.
+    - PC (Program Count) oder IP (Instruction Pointer).
 - Status Register. Dieser Register wurde interne Flag-Bits benutzt.
 
 ### Flags
