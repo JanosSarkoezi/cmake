@@ -1,18 +1,5 @@
 # x86 Meditations
 
-Konvertiere die 8086 (16-Bit) Anweisungen zu oktale Zahlen.
-
-## Register
-```
-0 - AX / AL
-1 - CX / CL
-2 - DX / CL
-3 - BX / BL
-4 - SP / AH
-5 - BP / CH
-6 - SI / DH
-7 - DI / BH
-```
 
 ## Operator Code (Opcode) Oktal
 ```
