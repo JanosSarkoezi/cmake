@@ -41,7 +41,49 @@ speziell die mit `^` gekennzeichneten. Diese Bytes lesen wie dann von **rechs** 
 00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
                          ^^ 
 ```
-Das sechste Byte. Siehe hierzu [e_ident[EI_DATA]](elf/tables/e_ident.md)
+Das sechste Byte. Siehe hierzu [e_ident[EI_DATA]](elf/tables/e_ident.md). Da steht eine 1 und das Bedeutet little-endian Objektfile struktur.
+
+Damit ist der Einstiegspunkt des Programms `0x04f0`. Gehen wir dann mit hexdump dahin:
+```
+hexdump -C /tmp/a.out -n 128 -s $((0x04f0))
+```
+und sehen:
+```
+000004f0  31 ed 49 89 d1 5e 48 89  e2 48 83 e4 f0 50 54 4c  |1.I..^H..H...PTL|
+00000500  8d 05 7a 01 00 00 48 8d  0d 03 01 00 00 48 8d 3d  |..z...H......H.=|
+00000510  cf 00 00 00 ff 15 c6 0a  20 00 f4 0f 1f 44 00 00  |........ ....D..|
+00000520  48 8d 3d e9 0a 20 00 48  8d 05 e2 0a 20 00 48 39  |H.=.. .H.... .H9|
+00000530  f8 74 15 48 8b 05 9e 0a  20 00 48 85 c0 74 09 ff  |.t.H.... .H..t..|
+00000540  e0 0f 1f 80 00 00 00 00  c3 0f 1f 80 00 00 00 00  |................|
+00000550  48 8d 3d b9 0a 20 00 48  8d 35 b2 0a 20 00 48 29  |H.=.. .H.5.. .H)|
+00000560  fe 48 c1 fe 03 48 89 f0  48 c1 e8 3f 48 01 c6 48  |.H...H..H..?H..H|
+00000570
+```
+Nun kann der Spass beginnen. Unser erster Byte ist `31`. Sehen wir in der Dokumentation von
+
+- Intel 64 and IA-32 Architectures Software Developer's Manual Voume 2 (2A, 2B, 2C $ 2D): Instruction Set Reference, A-Z
+    - Table A-2. One-Byte opcode Map: (00H-F7H)
+    - Table 2-1. 16-Bit Addressing Forms with the ModR/M Bype
+
+nach. Speziell die Table A-2.
+```
++-------- Zeile  mit der Nummer in der Tabelle (Table A-2.)
+|+------- Spalte mit der Nummer in der Tabelle (Table A-2.)
+||
+vv
+31
+```
+Wir bekommen die Anwesug
+```
+XOR Ev, Gv
+```
+Es wird also ein `XOR` ausgeführt, aber was bedeuten die Ev und Gv. Wir lesen in der Doku:
+
+- G The reg field of the ModR/M byte selects a general register (for example, AX (000)).  
+- E A ModR/M byte follows the opcode and specifies the operand. The operand is either a general-purpose
+register or a memory address. If it is a memory address, the address is computed from a segment register
+and any of the following values: a base register, an index register, a scaling factor, a displacement.
+- v Word, doubleword or quadword (in 64-bit mode), depending on operand-size attribute.
 
 ## Operator Code (Opcode) Oktal
 ```
@@ -83,7 +125,7 @@ Zu betrachten sind nun die Tabellen
 
 aus dem Dokument
 
-- Interl 64 and IA-32 Architectures Software Developer's Manual Voume 2 (2A, 2B, 2C $ 2D): Instruction Set Reference, A-Z
+- Intel 64 and IA-32 Architectures Software Developer's Manual Voume 2 (2A, 2B, 2C $ 2D): Instruction Set Reference, A-Z
 
 
 ```
