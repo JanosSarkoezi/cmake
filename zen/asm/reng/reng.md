@@ -85,101 +85,62 @@ register or a memory address. If it is a memory address, the address is computed
 and any of the following values: a base register, an index register, a scaling factor, a displacement.
 - v Word, doubleword or quadword (in 64-bit mode), depending on operand-size attribute.
 
-## Operator Code (Opcode) Oktal
+Ok ... also ModR/M. Unser nächster Byte ist also ein ModR/M Byte. Zusammen mit dem ersten Byte also
 ```
-00o - AND
-01o - OR
-02o - ADC
-03o - SBB
-04o - AND
-05o - SUB
-06o - XOR
-07o - CMP
+31 ed
 ```
-
-## ModR/M
-
-Mod
+Wir suchen aus der Table 2-2. 32-Bit Addressing Forms with the ModR/M Byte den Eintrag `ed` raus.
+Die Zeile wo `ed` ist beschreibt `EBP/BP/CH/MM5/XMM5` und die Spalte `CH/BP/EBP/MM5/XMM5`.
+Konvertieren und zerhacken wir unser Byte in Binär Darstellung
 ```
-00 - Memory
-01 - Memory [disp8]
-10 - Memory [disp16]
-11 - General Purpose Register
+11 101 101
+^   ^   ^
+|   |   |
+|   |   +-- R/M      (Table 2-1.)
+|   +------ Register (Table 2-1.)
++---------- Mod      (Table 2-1.)
 ```
-
-## Beispiele
-
-Betrachte die Hexadezimale Darstellung der folgenden Anweisung:
+so kommen wir auf das selbe Ergebnis. Wir lesen also in der Tabelle des `XOR` nach und erhalten
 ```
-23 0F
+Opcode  Instruction     Op     64-Bit   Compat/   Description
+                        En     Mode     LegMode
+---------------------------------------------------------------
+31 /r   XOR r/m16, r16  MR     Valid    Valid    r/m16 XOR r16.
+31 /r   XOR r/m32, r32  MR     Valid    Valid    r/m32 XOR r32.
+---------------------------------------------------------------
 ```
-Umwandeln in binäre Darstellung ergibt
+Damit bleiben nur noch `BP/EBP` als Kandidaten. Da aber die Beschreibung des XORs
 ```
-       23h        0Fh
-0010 0011b  00001111b
+XOR Ev, Gv
 ```
-Zu betrachten sind nun die Tabellen
-
-- Table A-2. One-Byte opcode Map: (00H-F7H)
-- Table 2-1. 16-Bit Addressing Forms with the ModR/M Bype
-
-aus dem Dokument
-
-- Intel 64 and IA-32 Architectures Software Developer's Manual Voume 2 (2A, 2B, 2C $ 2D): Instruction Set Reference, A-Z
-
+ergab und v für doubleword oder quadword steht, bleibt nur noch
+```
+XOR EBP, EBP
+```
+Wir können also das nächste Byte anschauen :).
 
 ```
-+-------- Zeile  in der Tabelle (Table A-2.)
-|+------- Spalte in der Tabelle (Table A-2.)
++-------- Zeile  mit der Nummer in der Tabelle (Table A-2.)
+|+------- Spalte mit der Nummer in der Tabelle (Table A-2.)
 ||
 vv
-23h          0Fh <-- Eintrag in der Tabelle (Table 2-1.)
-     00 001 111b
-     ^   ^   ^
-     |   |   |
-     |   |   +-- R/M      (Table 2-1.)
-     |   +------ Register (Table 2-1.)
-     +---------- Mod      (Table 2-1.)
+49
 ```
+Erhalten somit
 
-Die Kreuzung der 2. Zeile mit der 3. Spalte in der Tabelle (Table A-2.) führt zu:
 ```
-AND Gv,Ev
+eCX
+REX.WB
 ```
+Das `REX.WB` deutet auf ein sogenanntest REX Prefix hin. In der Beschreibung steht
 
-Dabei Steht Gv für (G)PR mit (V)ariable länge. Ev signaliziert das Folgen eines ModR/M Bytes, sodass der Operand ein word, double word GPR oder eine Memoryaddresse ist. In umserem Beispiel ist das foge Byte also ein ModR/M Byte.
+> REX prefixes are instruction-prefix bytes used in 64-bit mode. They do the following:
+> - Specify GPRs and SSE registers.
+> - Specify 64-bit operand size.
+> - Specify extended control registers.
 
-Zerlegt man das Byte in Bites wie oben, so kann aus der Tabelle (Table 2-1.) zu den Werten
-```
-Mod      =  00
-Register = 001
-R/M      = 111
-```
-die Addresse des Registers [BX] und den Register CX finden.
+---
 
-
-Damit ergeben die Hexadezimalzahlen `23 0F` die Anweisung
-```
-AND CX, [BX]
-```
-
-Möchte man den Befel
-```
-AND [BX], CX
-```
-Kodieren. so kann die mit der Hilfe der Tabelle (Table 2-1.) vorgenommen werden und erhält
-```
-21 0F
-```
-
-Wenden wir uns dem Konvertieren einer Anweisung in 80386 (32-Bit) zu. Betrachten wir die Bytes
-```
-23 0C 8B
-```
-so sehen wir `23` an der erstenn Stellel. Dies Bedeutet ein One-Byte OpCode. Und Lesen aus der Tabelle (Table A-2) wie schon vorher
-```
-AND Gv,Ev
-```
 Gehen in die Tabelle (Table 2-2. 32-Bit Addressing Froms with the ModR/M Byte) und lesen zu `0C` was spezielles aus. Unter der Effektieve Address ist `[--][--]` zu sehen. Die Bedeutung dieser Zeichen ist, das nach dem ModR/M Byte ein SIB Byte folgt.
 ```
 (S)cale = Der Multiplikator des Registers, der mit dem Index beschrieben wird.
