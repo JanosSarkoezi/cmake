@@ -46,9 +46,9 @@ Die Segment Register
 - *SS* Zeiger für den Stack. (Stack Segment)
 - *CS* Zeiger für den Code. (Code Segment)
 - *DS* Zeiger für die Daten. (Data Segment)
-- *ES* Zeiger für den Extra Daten. (Extra Segment)
-- *FS* Zeiger für den mehr Extra Daten. (F kommt hinter E)
-- *GS* Zeiger für den noch mehr Extra Daten. (G kommt hinter F)
+- *ES* Zeiger für die Extra Daten. (Extra Segment)
+- *FS* Zeiger für mehr Extra Daten. (F kommt hinter E)
+- *GS* Zeiger für noch mehr Extra Daten. (G kommt hinter F)
 
 ### Flags
 EFlags Register
