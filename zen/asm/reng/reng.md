@@ -186,7 +186,6 @@ Zu dem nächsten Byte, dem ModR/M Byte `d1`. Dies wird mit dem REX.WB modifizier
 
 Wir suchen aus der Table 2-2. 32-Bit Addressing Forms with the ModR/M Byte den Eintrag `d1` raus.
 Die Zeile wo `d1` ist beschreibt `ECX/CX/CL/MM/XMM1` und die Spalte `DL/DX/EDX/MM2/XMM2`.
-Konvertieren und zerhacken wir unser Byte in Binär Darstellung
 
 Beachtet man den REX.W, der ja ein 64-Bit Register signaliziert, so muss also
 ```
