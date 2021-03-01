@@ -149,7 +149,54 @@ Auser dem wird noch die Reienfolge der Prefixe beschreiben.
  Grp3, Grp4              3-Byte      (if required)  (if required)  Disspacement of  of 1, 2 or 4
  (Optional)                                                        1, 2 or 4 Bytes  bytes or none
 ```
+Zerlegen wir unseren `49` in Bites und schreiben laut Doku die Buchstaben `WRXB` an der richtigen Stelle darunter.
+```
+01001001
+    WRXB
+```
+Wir sehe also das der `W`und `B` Flag gesetzt sind (wie zu erwarten).
 
+- Wenn der `W` Flag gesetzt ist, bedutet das die Größe des Operanden 64-Bit ist.
+- Wenn der `B` Flag gesetzt ist, bedutet eines der folgenden Unterpunkte
+    - Erweiterung des ModR/M Feldes
+    - Erweiterung des SIB Feldes
+    - Erweiterung des Opcode reg Feldes
+
+Wenden wir uns dem Opcode zu, also dem nächsten Byte:
+```
++-------- Zeile  mit der Nummer in der Tabelle (Table A-2.)
+|+------- Spalte mit der Nummer in der Tabelle (Table A-2.)
+||
+vv
+89
+```
+ist also ein
+```
+MOV Ev, Gv
+```
+Da im Opcde ein `Ev` und ein `Gv` enthalten ist, muß ein ModR/M Byte folgen. Also ...
+Zu dem nächsten Byte, dem ModR/M Byte `d1`. Dies wird mit dem REX.WB modifiziert. Wir müssen also `d1` in Bites umwandelt und das ModR/M Bit an der richtigen Stelle zufügen.
+```
+11 010  001 (d1)
+11 010 1001
+       ^
+       |
+       +---  REX.B zu ModR/M hinzugfefügt
+```
+
+Wir suchen aus der Table 2-2. 32-Bit Addressing Forms with the ModR/M Byte den Eintrag `d1` raus.
+Die Zeile wo `d1` ist beschreibt `ECX/CX/CL/MM/XMM1` und die Spalte `DL/DX/EDX/MM2/XMM2`.
+Konvertieren und zerhacken wir unser Byte in Binär Darstellung
+
+Beachtet man den REX.W, der ja ein 64-Bit Register signaliziert, so muss also
+```
+MOV Ev, RDX
+```
+als zwischenergebnis rasukommen. Um dem Ev einen Namen zu geben, muß nur das modifizierte r/m Bits in dezimal umgerechnet werden (0b1001 = 9). Somit handelt es sich um den R9 Register.
+Final erhalten wir also
+```
+MOV R9, RDX
+```
 
 ---
 
