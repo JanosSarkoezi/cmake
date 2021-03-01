@@ -16,11 +16,11 @@ Der Register A war der Akkumulator. Die anderen sechs Register konnten individue
 ```
   7   6   5   4   3   2   1   0
 +---+---+---+---+---+---+---+---+
-| S | Z | 0 |AC | 0 | P | 0 | C |
+| S | Z | 0 | A | 0 | P | 0 | C |
 +---+---+---+---+---+---+---+---+
 ```
 - *C* Carry. Wird gesetzt, wenn nach einer arithmetischen Operation ein Übertrag entstanden ist.
 - *P* Parity. Wird gesetzt, wenn die Anzahl der 1-er Bits in einem Ergebnis gerade war.
-- *AC* Auxiliary Carry. Wird gesetzt, wenn ein Übertrag vom Bit 3 zum Bit 4 entstanden ist.
+- *A* Auxiliary Carry. Wird gesetzt, wenn ein Übertrag vom Bit 3 zum Bit 4 entstanden ist.
 - *Z* Zero. Wird gesetzt, wenn das Resultat des ausgeführten Befehls eine Null ergeben hat.
 - *S* Sign. Wird gesetzt, wenn das Resultat des ausgeführten Befehls eine negative Zahl ergeben hat.
