@@ -31,12 +31,17 @@ ausfüren und bekommen den Anfang der Date, genauer 128 Byte zu sehen. Bei mir s
 00000070  08 00 00 00 00 00 00 00  03 00 00 00 04 00 00 00  |................|
 00000080
 ```
-Wenn wir nun Die Struktur dieser Datei mit der Beschreibung des [Headers](ELF-64.md) verstehen, so interessieren wir uns für die zweite Zeile der hexdump ausgabe
+Wenn wir nun Die Struktur dieser Datei mit der Beschreibung des [Headers](elf/ELF-64.md) verstehen, so interessieren wir uns für die zweite Zeile der hexdump ausgabe
 ```
 00000010  03 00 3e 00 01 00 00 00  f0 04 00 00 00 00 00 00  |..>.............|
                                    ^^^^^^^^^^^^^^^^^^^^^^^
 ```
-speziell die mit `^` gekennzeichneten. Diese Bytes lesen wie dann von **rechs** nach **links** und erhalten so in der Kurzform `0x04f0`. Ach ja voher weiß man das, dass diese Bytes von rechts nach links zu lesen sind? Das steht auch im Header. Genauer in der 
+speziell die mit `^` gekennzeichneten. Diese Bytes lesen wie dann von **rechs** nach **links** und erhalten so in der Kurzform `0x04f0`. Ach ja voher weiß man das, dass diese Bytes von rechts nach links zu lesen sind? Das steht auch im Header. Genauer in der ersten Zeile des hexdump
+```
+00000000  7f 45 4c 46 02 01 01 00  00 00 00 00 00 00 00 00  |.ELF............|
+                         ^^ 
+```
+Das sechste Byte. Siehe hierzu [e_ident[EI_DATA]](elf/tables/e_ident.md)
 
 ## Operator Code (Opcode) Oktal
 ```
