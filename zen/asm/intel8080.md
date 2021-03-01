@@ -10,7 +10,6 @@ Der Register A war der Akkumulator. Die anderen sechs Register konnten individue
 - Die zwei 16 Bit Register
     - SP (Stack Pointer). Dieser Register referenzierte Speicheradressen auf dem Stack.
     - PC (Program Count) oder IP (Instruction Pointer).
-- Status Register. Dieser Register wurde interne Flag-Bits benutzt.
 
 ## Flags
 ```
