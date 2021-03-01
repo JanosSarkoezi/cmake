@@ -139,6 +139,18 @@ Das `REX.WB` deutet auf ein sogenanntest REX Prefix hin. In der Beschreibung ste
 > - Specify 64-bit operand size.
 > - Specify extended control registers.
 
+Auser dem wird noch die Reienfolge der Prefixe beschreiben.
+```
++-----------+-----------+-----------+--------------+--------------+----------------+---------------+
+| Legacy    |  REX      |   Opcode  |   ModR/M     |     SIB      |  Displacement  |   Immediate   |
+| Prefixes  |  Prefix   |           |              |              |                |               |
++-----------+-----------+-----------+--------------+--------------+----------------+---------------+
+ Grp1, Grp2  (Optional)  1-, 2-, or  1-Byte         1-Byte         Address          Immediate data
+ Grp3, Grp4              3-Byte      (if required)  (if required)  Disspacement of  of 1, 2 or 4
+ (Optional)                                                        1, 2 or 4 Bytes  bytes or none
+```
+
+
 ---
 
 Gehen in die Tabelle (Table 2-2. 32-Bit Addressing Froms with the ModR/M Byte) und lesen zu `0C` was spezielles aus. Unter der Effektieve Address ist `[--][--]` zu sehen. Die Bedeutung dieser Zeichen ist, das nach dem ModR/M Byte ein SIB Byte folgt.
