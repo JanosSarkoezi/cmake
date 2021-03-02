@@ -59,6 +59,9 @@ und sehen:
 00000560  fe 48 c1 fe 03 48 89 f0  48 c1 e8 3f 48 01 c6 48  |.H...H..H..?H..H|
 00000570
 ```
+
+# 31 ed
+
 Nun kann der Spass beginnen. Unser erster Byte ist `31`. Sehen wir in der Dokumentation von
 
 - Intel 64 and IA-32 Architectures Software Developer's Manual Voume 2 (2A, 2B, 2C $ 2D): Instruction Set Reference, A-Z
@@ -118,6 +121,9 @@ ergab und v für doubleword oder quadword steht, bleibt nur noch
 XOR EBP, EBP
 ```
 Wir können also das nächste Byte anschauen :).
+
+
+# 49 89
 
 ```
 +-------- Zeile  mit der Nummer in der Tabelle (Table A-2.)
