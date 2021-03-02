@@ -118,12 +118,12 @@ XOR Ev, Gv
 ```
 ergab und v für doubleword oder quadword steht, bleibt nur noch
 ```
-XOR EBP, EBP
+31 ed = XOR EBP, EBP
 ```
 Wir können also das nächste Byte anschauen :).
 
 
-# 49 89
+# 49 89 d1
 
 ```
 +-------- Zeile  mit der Nummer in der Tabelle (Table A-2.)
@@ -194,14 +194,58 @@ Wir suchen aus der Table 2-2. 32-Bit Addressing Forms with the ModR/M Byte den E
 Die Zeile wo `d1` ist beschreibt `ECX/CX/CL/MM/XMM1` und die Spalte `DL/DX/EDX/MM2/XMM2`.
 
 Beachtet man den REX.W, der ja ein 64-Bit Register signaliziert, so muss also
-```
+```49 89
 MOV Ev, RDX
 ```
 als zwischenergebnis rasukommen. Um dem Ev einen Namen zu geben, muß nur das modifizierte r/m Bits in dezimal umgerechnet werden (0b1001 = 9). Somit handelt es sich um den R9 Register.
 Final erhalten wir also
 ```
-MOV R9, RDX
+48 89 d1 = MOV R9, RDX
 ```
+
+# 5e
+
+Nun etwas schneller: `5e` -> `POP RSI/R14`. Da kein REX Prefix angegeben war kann `R14` enfallen, sodass
+```
+5e = POP RSI
+```
+
+# 48 89 e2
+
+```
+48 -> eAX REX.W
+89 -> MOV Ev, Gv
+e2 -> EDX ESP
+```
+Da das Byte ein `REX.W` gesetzt hat wird aus dem `E` ein `R` und damit
+```
+48 89 e2 = MOV RDX, RSP
+```
+
+# 48 83 e4 f0
+
+Dieser Fall ist interessanter als die anderen, da hier - wie sich herausstellen wird - die Operation nicht zwischen zwei Register vorgenommen wird. Sondern zwischen einem Register und ein Wert in Bytes.
+
+```
+48 -> eAX REX.W
+83 -> Immediate Grp1 (1A) Ev, Ib   <- Das ist NEU
+e4 -> 11 100 100
+```
+
+Jetzt kommt was neues. Wenn wir in der Table A-2 nachschauen, dann steht da unter `83`
+```
+Immediate Grp1 (1A) Ev, Ib
+```
+Also müssen wir da ModR/M Byte zerlegen
+```
+e4 -> 11 100 100
+      ^   ^   ^
+      |   |   |
+      |   |   +-- R/M      (Table 2-1.)
+      |   +------ Register (Table 2-1.)
+      +---------- Mod      (Table 2-1.)
+```
+Nun schauen wir uns die drei Bits des Register in der ModR/M an: `100`. 
 
 ---
 
