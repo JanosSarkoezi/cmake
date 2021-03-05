@@ -38,7 +38,23 @@ typedef struct
 } Elf64_Ehdr;
 ```
 
-Visulaisation of file header:
+## Visulaisation of file header
+
+### Short
+
+```
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|              e_i                |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|e_t|e_m|  e_v  |      e_e        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      e_p      |      e_s        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  e_f  |e_h|eph|epn|esh|esn|esidx|
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+### Long
 
 ```
     1        2        3        4        5        6        7        8        9        10       11       12       13       14       15       16
@@ -52,6 +68,9 @@ Visulaisation of file header:
 |              e_flags              |    e_ehsize     |  e_phentsize    |     e_phnum     |   e_shentsize   |     e_shnum     |   e_shstrndx    |
 +--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+
 ```
+
+
+## Description
 
 - `e_ident` identify the file as an ELF object file, and provide information about the data representation of the object file structures. [More Information](tables/e_ident.md)
 - `e_type` identifies the object file type. [More Information](tables/e_type.md)
@@ -89,7 +108,23 @@ typedef struct
 } Elf64_Shdr;
 ```
 
-Visulaisation of section header:
+## Visulaisation of section header
+
+### Short
+
+```
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  s_n  |  s_t  |      s_f        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      s_a      |      s_o        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      s_s      |  s_l  |  s_i    |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      s_aa     |      s_es       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+### Long
 
 
 ```
@@ -135,7 +170,23 @@ typedef struct
 } Elf64_Phdr;
 ```
 
-Visulaisation of program header:
+## Visulaisation of program header
+
+### Short
+
+```
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  p_t  |  p_f  |      p_o        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      p_v      |      p_p        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      p_f      |      p_m        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|      p_a      |
++-+-+-+-+-+-+-+-+
+```
+
+### Long
 
 ```
     1        2        3        4        5        6        7        8        9        10       11       12       13       14       15       16
