@@ -72,8 +72,8 @@ immer um eins erhöhen -------------+
 hexdump -n $((0x38)) -s $((0x40 + xxx * 0x38)) -C /tmp/a.out
 ```
 
-bis wir das Maximum erreicht haben, das wir in der ELF Header gefunden haben. In unserem Falle also `0x09`.
-Wir haben alle durch und finden bei dem Indes 2,3 und 4 die Einträge:
+bis wir das Maximum - 1  erreicht haben,  das wir in der ELF Header gefunden haben. In unserem Falle also `0x09 - 0x01 = 0x08`.
+Wir haben alle durch und finden bei den Indizes 2,3 und 4 die Einträge:
 
 ```
 hexdump -n $((0x38)) -s $((0x40 + 0x02 * 0x38)) -C /tmp/a.out
