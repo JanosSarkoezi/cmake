@@ -31,7 +31,7 @@ hexdump -n $((0x40)) -s $((0x0)) -C /tmp/a.out
 00000040
 ```
 
-Die Struktur des [ELF Haders](elf-header.md) in kurzer Form:
+Die Struktur des [ELF Headers](elf-header.md) in kurzer Form:
 
 ```
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
