@@ -7,7 +7,7 @@
 - [Section Header Table](elf-section-header.md)
 - [Hexdump example](elf-hexdump.md)
 
-## Visualisation of the relationship between Progam Header Table and Segments
+## Visualisation of the relationship between Program Header Table and Segments
 
 ```
 +----------------------+
