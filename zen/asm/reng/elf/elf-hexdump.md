@@ -164,8 +164,11 @@ hexdump -n $((0x40)) -s $((0x0)) -C /tmp/a.out
 ```
 
 Hier ist der Offset zu finden, ab der in dieser Datei (`a.out`), die Programm Header Tabellen (PHT) sich befinden. Der Offset bezieht sich auf den
-Anfang der Datei. Die Länge der Bytes des PHT befinden sich in `e_phentsize`. Die Anzahl der PHTs aus dem Eintrag `e_phnum` zu entnehmen. Schauen
-wir uns mit `hexdump` die ersten beiden PHTs an,
+Anfang der Datei. Die Länge der Bytes des PHT befinden sich in `e_phentsize`. Die Anzahl der PHTs aus dem Eintrag `e_phnum` zu entnehmen.
+
+Hier öffnen wir ein neues Kapitel: [Program Header Table](elf_hexdump_pht.md)
+
+Schauen wir uns mit `hexdump` die ersten beiden PHTs an,
 
 ```
 Anzahl  ----------------------------------+
