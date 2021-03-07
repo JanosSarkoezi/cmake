@@ -1,4 +1,4 @@
-# Program header
+# Program Header Table (PHT)
 
 C-Structure of program header:
 

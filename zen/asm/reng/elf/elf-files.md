@@ -1,7 +1,7 @@
 # ELF
 
 - [ELF Header](elf-header.md)
-- [Program Header Table](elf-program-header.md)
+- [Program Header Table](elf-program-header-table.md)
 - [Segment](elf-segment.md)
 - [Section](elf-section.md)
 - [Section Header Table](elf-section-header.md)
