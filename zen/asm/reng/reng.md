@@ -31,7 +31,7 @@ ausfüren und bekommen den Anfang der Date, genauer 128 Byte zu sehen. Bei mir s
 00000070  08 00 00 00 00 00 00 00  03 00 00 00 04 00 00 00  |................|
 00000080
 ```
-Wenn wir nun Die Struktur dieser Datei mit der Beschreibung des [Headers](elf/ELF-64.md) verstehen, so interessieren wir uns für die zweite Zeile der hexdump ausgabe
+Wenn wir nun Die Struktur dieser Datei mit der Beschreibung des [Headers](elf/elf-files.md) verstehen, so interessieren wir uns für die zweite Zeile der hexdump ausgabe
 ```
 00000010  03 00 3e 00 01 00 00 00  f0 04 00 00 00 00 00 00  |..>.............|
                                    ^^^^^^^^^^^^^^^^^^^^^^^
